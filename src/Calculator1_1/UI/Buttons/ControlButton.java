@@ -1,9 +1,11 @@
 package Calculator1_1.UI.Buttons;
 
+import Calculator1_1.UI.Fields.InputOutputField;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class ControlButton extends JButton{
+public class ControlButton extends JButton {
 
     private static JButton controlButton;
 
@@ -13,6 +15,7 @@ public class ControlButton extends JButton{
     private ControlButton(String buttonName) {
         this.controlButton = new JButton(buttonName);
         controlButton.setPreferredSize(new Dimension(BUTTON_WIDTH, BUTTON_HEIGHT));
+        controlButton.addActionListener(new ButtonsListener(InputOutputField.getIoField()));
 
     }
 
