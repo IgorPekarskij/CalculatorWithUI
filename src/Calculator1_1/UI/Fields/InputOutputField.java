@@ -33,16 +33,7 @@ public class InputOutputField extends JTextField{
         return ioField;
     }
 
-    public String getDefoultFieldText() {
+    public String getDefaultFieldText() {
         return defoultFieldText;
     }
-    //    public void actionPerformed(ActionEvent e) {
-//        String currentChar = e.getActionCommand();
-//        double number = Double.parseDouble(currentChar);
-//
-//        StringBuilder appendString = new StringBuilder(enteredString);
-//        appendString.append(currentChar);
-//
-//        ioField.setText(appendString.toString());
-//    }
 }
