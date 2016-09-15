@@ -15,6 +15,7 @@ public class StartCalculator1_1 {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
+                // Setting new LookAndFeel - AeroLookAndFeel from JTattoo library
                 try {
                     UIManager.setLookAndFeel(new com.jtattoo.plaf.aero.AeroLookAndFeel());
                 }catch (UnsupportedLookAndFeelException e) {}
@@ -28,12 +29,13 @@ public class StartCalculator1_1 {
                 inputOutputField.setOptions();
                 inputOutputPanel.getTextPanel().add(inputOutputField);
 
+                // Creation and adding buttons on panel
                 ButtonsFieldPanel controlPanel = new ButtonsFieldPanel();
                 controlPanel.getCalcPanel().add(ControlButton.createButton("7"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("8"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("9"));
-                controlPanel.getCalcPanel().add(ControlButton.createButton("+"));
-                controlPanel.getCalcPanel().add(ControlButton.createButton("-"));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("%"));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("CLR"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("4"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("5"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("6"));
@@ -42,13 +44,15 @@ public class StartCalculator1_1 {
                 controlPanel.getCalcPanel().add(ControlButton.createButton("1"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("2"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("3"));
-                controlPanel.getCalcPanel().add(ControlButton.createButton("="));
-                controlPanel.getCalcPanel().add(ControlButton.createButton("CLR"));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("-"));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("+"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("0"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("00"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("."));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("+/-"));
+                controlPanel.getCalcPanel().add(ControlButton.createButton("="));
 
-
+                //Adding panels on main frame
                 calculator.getCalculatorFrame().add(inputOutputPanel.getTextPanel(), BorderLayout.NORTH);
                 calculator.getCalculatorFrame().add(controlPanel.getCalcPanel(), BorderLayout.CENTER);
             }
