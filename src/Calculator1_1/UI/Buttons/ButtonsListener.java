@@ -1,6 +1,6 @@
 package Calculator1_1.UI.Buttons;
 
-import Calculator1_1.Computing.Comput;
+import Calculator1_1.Computing.Compute;
 import Calculator1_1.UI.Fields.InputOutputField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,7 +35,7 @@ public class ButtonsListener implements ActionListener {
             }
         }else if (button.equals("CLR")){
             clear();
-            field.setText(field.getDefoultFieldText());
+            field.setText(field.getDefaultFieldText());
 
         }else if(button.equals("=")){
                 displayResult(null);
@@ -84,7 +84,7 @@ public class ButtonsListener implements ActionListener {
 
     private void displayResult(String percent){
         secondNumber = enteredNumber;
-        Double result = Comput.compute(firstNumber, secondNumber, operationCharacter, percent);
+        Double result = Compute.compute(firstNumber, secondNumber, operationCharacter, percent);
         enteredNumber = "";
         firstNumber = result.toString();
         field.setText("= " + firstNumber);
