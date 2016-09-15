@@ -9,7 +9,6 @@ public class ButtonsListener implements ActionListener {
 
     private InputOutputField field;
     private static String enteredNumber ="";
-    private static boolean isFirstNumberSet = false;
     private static String firstNumber = "0";
     private static String secondNumber = "0";
     private static String operationCharacter = "!";
@@ -34,39 +33,22 @@ public class ButtonsListener implements ActionListener {
                 field.setText(enteredNumber);
             }
         }else if (button.equals("CLR")){
-            enteredNumber ="" ;
+            clear();
             field.setText(field.getDefoultFieldText());
-            isFirstNumberSet = false;
-            firstNumber = "0";
-            secondNumber = "0";
-            operationCharacter = "!";
 
         }else if(button.equals("=")){
                 secondNumber = enteredNumber;
                 Double result = Comput.compute(firstNumber, secondNumber, operationCharacter);
-                firstNumber = result.toString();
-                enteredNumber = "= ";
-                enteredNumber += result.toString();
-                field.setText(enteredNumber);
                 enteredNumber = "";
-                firstNumber = "0";
-                secondNumber = "0";
-                operationCharacter = "!";
-                isFirstNumberSet = false;
+                firstNumber = result.toString();
+                field.setText("= " + firstNumber);
 
         }else {
-            if(!isFirstNumberSet) {
-                operationCharacter = button;
+            if(enteredNumber != ""){
                 firstNumber = enteredNumber;
-                enteredNumber = "";
-                isFirstNumberSet = true;
             }
-// else {
-//                secondNumber = enteredNumber;
-//                operationCharacter = button;
-//                Double tempResult = Comput.compute(firstNumber, secondNumber, operationCharacter);
-////                firstNumber = tempResult.toString();
-//            }
+                operationCharacter = button;
+                enteredNumber = "";
         }
 
     }
@@ -77,5 +59,12 @@ public class ButtonsListener implements ActionListener {
         }catch (NumberFormatException ignore){
             return false;
         }
+    }
+
+    private void clear(){
+        enteredNumber ="" ;
+        firstNumber = "0";
+        secondNumber = "0";
+        operationCharacter = "!";
     }
 }
