@@ -12,6 +12,7 @@ public class ButtonsListener implements ActionListener {
     private static String firstNumber = "0";
     private static String secondNumber = "0";
     private static String operationCharacter = "!";
+    private static int countMinus = 0;
 
     public ButtonsListener(InputOutputField field) {
         this.field = field.getIoField();
@@ -37,21 +38,33 @@ public class ButtonsListener implements ActionListener {
             field.setText(field.getDefoultFieldText());
 
         }else if(button.equals("=")){
-                secondNumber = enteredNumber;
-                Double result = Comput.compute(firstNumber, secondNumber, operationCharacter);
-                enteredNumber = "";
-                firstNumber = result.toString();
-                field.setText("= " + firstNumber);
+                displayResult(null);
 
-        }else {
+        }else if(button.equals("%")){
+            displayResult(button);
+
+        }else if(button.equals("minus")){
+            if(countMinus == 0) {
+                enteredNumber = "-" + enteredNumber;
+                field.setText(enteredNumber);
+                countMinus++;
+            }else {
+                enteredNumber = enteredNumber.substring(1);
+                field.setText(enteredNumber);
+                countMinus --;
+            }
+        }
+        // If character equals [+||-||*||/]
+        else {
             if(enteredNumber != ""){
                 firstNumber = enteredNumber;
             }
                 operationCharacter = button;
                 enteredNumber = "";
+                countMinus = 0;
         }
-
     }
+    // Method checked is current clicked button with number or not
     private boolean checkNumber(String button){
         try {
             Integer.parseInt(button);
@@ -60,11 +73,20 @@ public class ButtonsListener implements ActionListener {
             return false;
         }
     }
-
+    //Method resets all calculation
     private void clear(){
         enteredNumber ="" ;
         firstNumber = "0";
         secondNumber = "0";
         operationCharacter = "!";
+        countMinus = 0;
+    }
+
+    private void displayResult(String percent){
+        secondNumber = enteredNumber;
+        Double result = Comput.compute(firstNumber, secondNumber, operationCharacter, percent);
+        enteredNumber = "";
+        firstNumber = result.toString();
+        field.setText("= " + firstNumber);
     }
 }
