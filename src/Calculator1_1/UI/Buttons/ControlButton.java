@@ -24,6 +24,4 @@ public class ControlButton extends JButton {
         return controlButton;
 
     }
-
-
 }
