@@ -49,7 +49,9 @@ public class StartCalculator1_1 {
                 controlPanel.getCalcPanel().add(ControlButton.createButton("0"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("00"));
                 controlPanel.getCalcPanel().add(ControlButton.createButton("."));
-                controlPanel.getCalcPanel().add(ControlButton.createButton("+/-"));
+                JButton minus = ControlButton.createButton("+/-");
+                minus.setActionCommand("minus");                                    //SetActionCommand on button "+/-"
+                controlPanel.getCalcPanel().add(minus);
                 controlPanel.getCalcPanel().add(ControlButton.createButton("="));
 
                 //Adding panels on main frame
