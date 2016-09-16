@@ -9,7 +9,7 @@ import java.awt.*;
 public class InputOutputField extends JTextField{
     private static InputOutputField ioField;
     private final int fieldColumns = 20;
-    private final String defoultFieldText = "введите число";
+    private final String defaultFieldText = "введите число";
 
    private InputOutputField() {
         super();
@@ -21,7 +21,7 @@ public class InputOutputField extends JTextField{
        return ioField;
    }
    public  void setOptions(){
-        ioField.setText(defoultFieldText);
+        ioField.setText(defaultFieldText);
         ioField.setColumns(fieldColumns);
         ioField.setForeground(Color.blue);
         ioField.setFont(new Font("", Font.BOLD, 20));
@@ -29,11 +29,11 @@ public class InputOutputField extends JTextField{
         ioField.setEditable(false);
         ioField.addActionListener(new ButtonsListener(ioField));
     }
-    public static InputOutputField getIoField() {
+    public static InputOutputField getIOField() {
         return ioField;
     }
 
     public String getDefaultFieldText() {
-        return defoultFieldText;
+        return defaultFieldText;
     }
 }
